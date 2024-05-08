@@ -11,6 +11,8 @@ As of 2024 May 9, the latest VIIRS and VIIRS-like datasets have already been sto
 
 (3) VIIRS_analysis.ipynb supports both VIIRS and VIIRS-like processing. Per runtime, you should select which one should be processed. Both of them cannot work simultaneously at a single runtime. Read notes in the notebook.
 
+
+## Filtering pipelines:
 There are 2 filtering pipelines are available:
 
 **(A) OSM+SDV filtering:**
@@ -25,6 +27,11 @@ A quick process note is that:
 
 - (1) Polygonize VIIRS pixels whose Std.Dev  >= 8.477 for large bases and Std.Dev >= 2.518 for small bases.
 - (2) The WB expert team verified each SDV-based polygon one by one with eyes (resulting in 52 polygons = verified military bases).
-(3) Extract the VIIRS NTL values only within the 'expert-verified' potentially military polygons. Be sure that the team tried to be as comprehensive as possible, but there must be both inclusion and exclusion erros.
-(4) Both annual mean and annual max for each 'expert-verified' polygon and constructed a composite index using both mean and max (Mean-Max index) to identify the opening and closing of each base (polygon). Here, the Mean-Max Index >= 0.5 is considered to be 'active coalition bases' and 0.5 > the Mean-Max Index >= 0.25 is considered to be 'active Afghan bases.'
-(5) Based on this 'opening-closing' timing matrix (see below), the expert-verified polygons are _time-selectively_ applied to the monthly VIIRS data to mask out the NTL values within the expert-verified polygons only when the polygon is 'active.'
+- (3) Extract the VIIRS NTL values only within the 'expert-verified' potentially military polygons. Be sure that the team tried to be as comprehensive as possible, but there must be both inclusion and exclusion erros.
+- (4) Both annual mean and annual max for each 'expert-verified' polygon and constructed a composite index using both mean and max (Mean-Max index) to identify the opening and closing of each base (polygon). Here, the Mean-Max Index >= 0.5 is considered to be 'active coalition bases' and 0.5 > the Mean-Max Index >= 0.25 is considered to be 'active Afghan bases.'
+- (5) Based on this 'opening-closing' timing matrix (see below), the expert-verified polygons are _time-selectively_ applied to the monthly VIIRS data to mask out the NTL values within the expert-verified polygons only when the polygon is 'active.'
+
+## Contributors
+Eigo Tateishi (main coder), Walker Kosmidou-Bradley (expert input), and Oscar Eduardo Barriga Cabanillas (expert input)
+
+The World Bank (2024)
