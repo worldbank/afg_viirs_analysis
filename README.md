@@ -7,5 +7,22 @@ As of 2024 May 9, the latest VIIRS and VIIRS-like datasets have already been sto
 ## Quick start:
 (1) Copy and paste all materials to your own Google Colab environment. If you are good at Python coding, a new Conda environment could also work but you likely need to modify some code blocks (especially around libraries and paths).
 
-(2) Unless you need to update the raw VIIRS (VIIRS-like) data, you can start with VIIRS_analysis.ipynb. For detailed instructions, check the comments inside the notebooks.
+(2) Unless you need to update the raw VIIRS (VIIRS-like) data, you can skip VIIRS_download.ipynb and just start with VIIRS_analysis.ipynb. For detailed instructions, check the comments inside the notebooks.
 
+(3) VIIRS_analysis.ipynb supports both VIIRS and VIIRS-like processing. Per runtime, you should select which one should be processed. Both of them cannot work simultaneously at a single runtime. Read notes in the notebook.
+
+There are 2 filtering pipelines are available:
+
+**(A) OSM+SDV filtering:**
+To mask NTL from potential military bases, this pipeline uses military-labeled polygons in OSM as well as the Standard Deviation (SDV) thresholding filter. Here, the 'SDV' part needs to be understood carefully in that it simply applies a Standard Deviation threshold >= 8.477 across all monthly VIIRS data (2014JAN-2023DEC, as of 2024 May 9) REGARDLESS OF the potential opening/closing of bases WITHOUT eye-visual assessment of military polygons. The filtered VIIRS data shall be aggregated at the province level.
+
+
+**(B) Expert-verified SDV-based polygon filtering:**
+To mask NTL from potential military bases, this pipeline applies _time-selectively_ expert-eye-check, SDV-based mask polygons.
+A quick process note is that:
+
+(1) Polygonize VIIRS pixels whose Std.Dev  >= 8.477 for large bases and Std.Dev >= 2.518 for small bases.
+(2) The WB expert team verified each SDV-based polygon one by one with eyes (resulting in 52 polygons = verified military bases).
+(3) Extract the VIIRS NTL values only within the 'expert-verified' potentially military polygons. Be sure that the team tried to be as comprehensive as possible, but there must be both inclusion and exclusion erros.
+(4) Both annual mean and annual max for each 'expert-verified' polygon and constructed a composite index using both mean and max (Mean-Max index) to identify the opening and closing of each base (polygon). Here, the Mean-Max Index >= 0.5 is considered to be 'active coalition bases' and 0.5 > the Mean-Max Index >= 0.25 is considered to be 'active Afghan bases.'
+(5) Based on this 'opening-closing' timing matrix (see below), the expert-verified polygons are _time-selectively_ applied to the monthly VIIRS data to mask out the NTL values within the expert-verified polygons only when the polygon is 'active.'
