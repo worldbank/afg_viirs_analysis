@@ -1,7 +1,7 @@
 # afg_viirs_analysis / Afghanistan VIIRS Data Analysis
 Extract VIIRS and VIIRS-like data, pre-process them, and analyze their time-series NTL intensity while excluding the NTL pixels that are assumed to be emitted from the coalition military bases before Oct 2021.
 
-All Jupyter notebooks are optimized for the [Google Colab](https://colab.google/) environment. The pre-processing of monthly VIIRS data in an X-array dataset is memory-heavy, so you likely need to upgrade your Google Colab account from free to paid one.
+All Jupyter notebooks are optimized for the [Google Colab](https://colab.google/) environment. The pre-processing of monthly VIIRS data in an X-array dataset is memory-heavy, so you likely need to upgrade your Google Colab account from a free to a paid one.
 
 As of 2024 May 9, the latest VIIRS (2014 JAN–2023 DEC, monthly) and VIIRS-like (2000–2022, yearly) datasets within the Afghanistan national boundary have already been stored. So, at this moment, you don't need to update the raw datasets. Check the VIIRS downloader if you need the latest datasets.
 
