@@ -16,9 +16,9 @@ As of 2024 May 9, the latest VIIRS (2014 JAN–2023 DEC, monthly) and VIIRS-like
 ## Filtering pipelines:
 There are 2 filtering pipelines are available:
 
-**(A) OSM+SDV filtering:**
+**(A) OpenStreetMap and Standard Deviation threshold (OSM+SDV) filtering:**
 
-To mask NTL from potential military bases, this pipeline uses military-labeled polygons in OSM as well as the Standard Deviation (SDV) thresholding filter. Here, the 'SDV' part needs to be understood carefully in that it simply applies a Standard Deviation threshold >= 8.477 across all monthly VIIRS data (2014JAN-2023DEC, as of 2024 May 9) REGARDLESS OF the potential opening/closing of bases WITHOUT eye-visual assessment of military polygons. The filtered VIIRS data shall be aggregated at the province level.
+To mask NTL from potential military bases, this pipeline uses military-labeled polygons in OSM as well as the Standard Deviation (SDV) thresholding filter. Here, the 'SDV' part needs to be understood carefully in that it simply applies a Standard Deviation threshold >= 8.477 across all monthly VIIRS data (2014JAN–2023DEC, as of 2024 May 9) REGARDLESS OF the potential opening/closing of bases WITHOUT eye-visual assessment of military polygons. The filtered VIIRS data shall be aggregated at the province level.
 
 
 **(B) Expert-verified SDV-based polygon filtering:**
@@ -33,6 +33,7 @@ A quick process note is that:
 - (5) Based on this 'opening-closing' timing matrix (see below), the expert-verified polygons are _time-selectively_ applied to the monthly VIIRS data to mask out the NTL values within the expert-verified polygons only when the polygon is 'active.'
 
 ## Technical notes:
+- VIIRS datasets: **VIIRS_analysis.ipynb** has an anomaly-NTL reduction process (Filter-1: Noise reduction (background and max anomalies)) based on the NTL background noise mask (average_masked in [VIIRS Nighttime Day/Night Annual Band Composites V2.1](https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_DNB_ANNUAL_V21#bands)) and the avg_rad < 300 max-cap threshold. This process should be run before the other filtering processes.
 - VIIRS-like datasets: Read its [foundational technological paper](https://essd.copernicus.org/articles/13/889/2021/) by Zuoqi Chen et al. (2021).
 - Also read [Global NPP-VIIRS-like nighttime light (2000-2022)](https://gee-community-catalog.org/projects/npp_viirs_ntl/)
 
