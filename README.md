@@ -8,7 +8,7 @@ As of 2024 May 9, the latest VIIRS (2014 JAN–2023 DEC, monthly) and VIIRS-like
 ## Quick start:
 (1) Copy and paste all materials to your own Google Colab environment. If you are good at Python coding, a new Conda environment could also work but you likely need to modify some code blocks (especially around libraries and paths).
 
-(2) Unless you need to update the raw VIIRS (VIIRS-like) data, you can skip V`IIRS_download.ipynb` and just start with `VIIRS_analysis.ipynb`. For detailed instructions, check the comments inside the notebooks.
+(2) Unless you need to update the raw VIIRS (VIIRS-like) data, you can skip `VIIRS_download.ipynb` and just start with `VIIRS_analysis.ipynb`. For detailed instructions, check the comments inside the notebooks.
 
 (3) `VIIRS_analysis.ipynb` supports both VIIRS and VIIRS-like processing. Per runtime, you should select which one should be processed. Both of them cannot work simultaneously at a single runtime. Read notes in the notebook.
 
@@ -18,7 +18,7 @@ There are 2 filtering pipelines are available:
 
 **(A) OpenStreetMap and Standard Deviation threshold (OSM+SDV) filtering:**
 
-To mask NTL from potential military bases, this pipeline uses military-labeled polygons in OSM as well as the Standard Deviation (SDV) thresholding filter. Here, the 'SDV' part needs to be understood carefully in that it simply applies a Standard Deviation threshold >= 8.477 across all monthly VIIRS data (2014JAN–2023DEC, as of 2024 May 9) REGARDLESS OF the potential opening/closing of bases WITHOUT eye-visual assessment of military polygons. The filtered VIIRS data shall be aggregated at the province level.
+To mask NTL from potential military bases, this pipeline uses military-labeled polygons in OSM as well as the Standard Deviation (SDV, Std.Dev) thresholding filter. Here, the 'SDV' part needs to be understood carefully in that it simply applies a `Std.Dev >= 8.477` threshold across all monthly VIIRS data (2014JAN–2023DEC, as of 2024 May 9) REGARDLESS OF the potential opening/closing of bases WITHOUT eye-visual assessment of military polygons. The filtered VIIRS data shall be aggregated at the province level.
 
 
 **(B) Expert-verified SDV-based polygon filtering:**
