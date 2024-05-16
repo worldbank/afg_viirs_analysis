@@ -39,6 +39,8 @@ A quick process note is that:
 
 
 ## Contributors
-Eigo Tateishi (main coder), Walker Kosmidou-Bradley (expert input), and Oscar Eduardo Barriga Cabanillas (expert input)
+- Eigo Tateishi (main coder) / No longer working on this repo/project
+- :star:Walker Kosmidou-Bradley (expert input) / Contact person
+- :star:Oscar Eduardo Barriga Cabanillas (expert input) / Contact person
 
 The World Bank (2024)
