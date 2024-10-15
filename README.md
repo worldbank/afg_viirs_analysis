@@ -32,7 +32,7 @@ A quick process note is that:
 - (3) Extract the VIIRS NTL values only within the 'expert-verified' potentially military polygons. Be sure that the team tried to be as comprehensive as possible, but there must be both inclusion and exclusion errors.
 - (4) Both annual mean and annual max for each 'expert-verified' polygon and constructed a composite index using both mean and max (Mean-Max index) to identify the opening and closing of each base (polygon). Here, `the Mean-Max Index >= 0.5` is considered to be 'active coalition bases' and `0.5 > the Mean-Max Index >= 0.25` is considered to be 'active Afghan bases.'
 - (5) Based on this 'opening-closing' timing matrix (see below), the expert-verified polygons are _time-selectively_ applied to the monthly VIIRS data to mask out the NTL values within the expert-verified polygons only when the polygon is 'active.'
-- (6) A function applied later tweaks the "opening-closing" timing matrix so that each polygon is always classified as a military base. Instead of marking the base as inactive, it assigns the polygon as either a coalition or Afghan base, based on the Mean-Max Index, ensuring continuous military status with shifting designations over time.
+- (6) A function applied later tweaks the "opening-closing" timing matrix so that each polygon is always classified as a military base. Instead of marking the base as inactive, it assigns the polygon as either a coalition or Afghan base, based on ealrier years values, ensuring continuous military status with shifting designations over time.
 
 - This version incorporates and overlaps the OSM military-tagged polygons into the process flow.
 
