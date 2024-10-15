@@ -44,7 +44,7 @@ A quick process note is that:
 
 ## Contributors
 - `Eigo Tateishi` (main coder) / No longer working on this repo/project
-- `Ivo Teruggi` (current lead developer) / currently mainting the repo/project
+- `Ivo Teruggi` (current lead developer) / Currently maintaining the repo/project
 - :star:`Walker Kosmidou-Bradley` (expert input) / Contact person
 - :star:`Oscar Eduardo Barriga Cabanillas` (expert input) / Contact person
 
